@@ -1,89 +1,160 @@
 
+# Instalación Gitflow
+
+# Clonamos el repositorio de gitflow
 git clone --recursive git://github.com/nvie/gitflow.git
+
+# Nos movemos a la carpeta gitflow
 cd gitflow
 
+# Buscamos la carpeta donde está instalado git
 C:\Program Files\Git\bin
 
+# Ejecutamos el siguiente comando, en mi caso esto no me funcionó 
+# así que manualmente copie los archivos de gitflow en el bin de git
+# git-flow, gitflow-common,git-flow-feature,git-flow-hotfix,git-flow-init,
+# git-flow-release,gitflow-shFlags,git-flow-support y git-flow-version
 contrib\msysgit-install.cmd "C:\Program Files\Git\"
 
 
+# Iniciamos el repositorio de git
 git init
 
+# Inicializamos gitflow 
 git flow init 
 
+# Nos movemos  a la rama master
 git checkout master
 
-git remote add origen git@github.globant.com:agustin-merino/LabGit.git
+# agregamos el repositorio central
+git remote add origen git@github.com:agustinmerino/gitflowdemo.git
 
+# Hacemos push de nuestro repositorio local en la rama master
 git push -u origin master
 
+# Nos movemos a la rama develop
 git checkout develop
 
+# Hacemos push de nuestra rama develop
 git push origen develop
 
+# Creamos una nueva feature
 git flow feature start 1-testcreatefeatureissue
 
-git flow feature publish 1-testcreatefeatureissue
-
-git flow feature track 1-testcreatefeatureissue
-
-# Flow Developer Repository
-
-git flow feature track 1-testcreatefeatureissue
-
+# Hacemos modificaciones asociadas a nuestra feature
+# agregamos los cambios
 git add .
 
+git commit -am "Add cambios feature"
+
+
+# Publicamos los cambios de nuestra feature
+git flow feature publish 1-testcreatefeatureissue
+
+
+# Flow Developer Repository
+# Clonamos el repositorio del nuevo colaborador
+git clone git@github.com:agustinmerino/gitflowdemo.git
+
+# Nos movemos a la rama develop
+git checkout develop
+# nos movemos a la feature con la que queremos colaborar
+git flow feature track 1-testcreatefeatureissue
+
+# Agregamos nuestros cambios
+git add .
+
+# Hacemos commit de nuestros cambios
 git commit -am "agregando comandos gitflow"
 
+# enviamos al repositorio central nuestros cambios sobre la feature
 git push
 
 
 # Flow  Repository
+# Nos movemos a la feature
+git checkout feature/1-testcreatefeatureissue
 
+# En el colaborar que creo el feature vamos a actualizar los cambios 
 git pull 
 
+# Finalizamos la feature
 git flow finish 1-testcreatefeatureissue
 
+# En la ventana de comandos del colaborador nos movemos a develop
+git checkout develop
+# eliminamos la rama de la feature
 git branch -d feature/1-testcreatefeatureissue
 
-
-git flow release start sprint1-release
-
-git flow release publish sprint1-release
-
-git flow release track sprint1-release
-
-git add .
-
-git commit -am "Add Release and Feature Commands"
-
-git push
-
+# Iniciaremos una nueva release 
+# nos movemos a la rama develop 
 git checkout develop
 
-git pull
+# creamos la nueva release
+git flow release start sprint1-release
 
-git merge release/sprint1-release
+# publicamos los cambios de esta release
+git flow release publish sprint1-release
 
-git push
 
+# Si queremos colaborar sobre la release lo hacemos de la siguiente forma
+git flow release track sprint1-release
 
-git checkout release/sprint1-release
-
-git pull
-
-git flow release finish sprint1-release
-
-git checkout master
-
-git push --tags
-
-git pull
-
-git flow hotfix start hf1
-
+# agregamos los cambios
 git add .
 
+# hacemos commit de los cambios
+git commit -am "Add Release and Feature Commands"
+
+# hacemos push de los cambios
+git push
+
+# en el colaboraro principal mos movemos a la rama develop
+git checkout develop
+
+# actualizamos nuestro repo con los combios del otro colaborador
+git pull
+
+# hacemos merge de develop con el release
+git merge release/sprint1-release
+
+# hacemos push de los cambios
+git push
+
+# nos movemos a la rama de release
+git checkout release/sprint1-release
+
+# actualizamos 
+git pull
+
+# Finalizamos el release
+git flow release finish sprint1-release
+
+# nos movemos a la rama master
+git checkout master
+
+# hacemos push de todos los tags, para que nuestro release aparezca como un tag
+git push --tags
+
+# Trabajo con fixhot
+# actualizamos nuestro repo
+git pull
+
+# creamos un fixhot 
+git flow hotfix start hf1
+
+# agregamos los cambios
+git add .
+
+# hacemos commit de los cambios
 git commit -am "Add new Commands"
 
+# finalizamos el fixhot
 git flow hotfix finish hf1
+
+# nos movemos a la rama master
+git checkout master
+
+
+# subimos toda la rama master
+git push --all origen
