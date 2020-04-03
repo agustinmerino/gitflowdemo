@@ -1,0 +1,22 @@
+
+git clone --recursive git://github.com/nvie/gitflow.git
+cd gitflow
+
+C:\Program Files\Git\bin
+
+contrib\msysgit-install.cmd "C:\Program Files\Git\"
+
+
+git init
+
+git flow init 
+
+git checkout master
+
+git remote add origen git@github.globant.com:agustin-merino/LabGit.git
+
+git push -u origin master
+
+git checkout develop
+
+git push origen develop
