@@ -1,0 +1,54 @@
+
+git clone --recursive git://github.com/nvie/gitflow.git
+cd gitflow
+
+C:\Program Files\Git\bin
+
+contrib\msysgit-install.cmd "C:\Program Files\Git\"
+
+
+git init
+
+git flow init 
+
+git checkout master
+
+git remote add origen git@github.globant.com:agustin-merino/LabGit.git
+
+git push -u origin master
+
+git checkout develop
+
+git push origen develop
+
+git flow feature start 1-testcreatefeatureissue
+
+git flow feature publish 1-testcreatefeatureissue
+
+git flow feature track 1-testcreatefeatureissue
+
+# Flow Developer Repository
+
+git flow feature track 1-testcreatefeatureissue
+
+git add .
+
+git commit -am "agregando comandos gitflow"
+
+git push
+
+
+# Flow  Repository
+
+git pull 
+
+git flow finish 1-testcreatefeatureissue
+
+git branch -d feature/1-testcreatefeatureissue
+
+
+git flow release start sprint1-release
+
+git flow release publish sprint1-release
+
+git flow release track sprint1-release
