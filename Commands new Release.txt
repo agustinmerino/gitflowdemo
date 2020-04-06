@@ -61,7 +61,7 @@ git flow hotfix start hf2
 git add .
 
 # hacemos commit de los cambios
-git commit -am "Add new Commands fixhot"
+git commit -am "Add new Commands fixhot replace origen for origin"
 
 # finalizamos el fixhot
 git flow hotfix finish hf2
@@ -71,4 +71,4 @@ git checkout master
 
 
 # subimos toda la rama master
-git push --all origen
+git push --all origin
