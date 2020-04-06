@@ -14,7 +14,7 @@ git commit -am "Add cambios feature"
 git flow feature publish 3-newrelease
 
 # Finalizamos la feature
-git flow finish 1-testcreatefeatureissue
+git flow finish 3-newrelease
 
 # Nos movemos a develop
 git checkout develop
@@ -26,6 +26,9 @@ git flow release start sprint3-release
 
 # publicamos los cambios de esta release
 git flow release publish sprint3-release
+
+# Nos movemos a develop
+git checkout develop
 
 # hacemos merge de develop con el release
 git merge release/sprint3-release
@@ -45,3 +48,27 @@ git checkout master
 
 # hacemos push de todos los tags, para que nuestro release aparezca como un tag
 git push --tags
+
+
+# Trabajo con fixhot
+# actualizamos nuestro repo
+git pull
+
+# creamos un fixhot 
+git flow hotfix start hf2
+
+# agregamos los cambios
+git add .
+
+# hacemos commit de los cambios
+git commit -am "Add new Commands fixhot"
+
+# finalizamos el fixhot
+git flow hotfix finish hf2
+
+# nos movemos a la rama master
+git checkout master
+
+
+# subimos toda la rama master
+git push --all origen
