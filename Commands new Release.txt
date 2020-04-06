@@ -66,9 +66,17 @@ git commit -am "Add new Commands fixhot replace origen for origin"
 # finalizamos el fixhot
 git flow hotfix finish hf2
 
+# nos movemos al develop
+git checkout develop
+
+# actualizamos los cambios
+git push
+
 # nos movemos a la rama master
 git checkout master
 
+# Actualizamos los tags
+git push --tags
 
 # subimos toda la rama master
 git push --all origin
