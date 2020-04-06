@@ -1,0 +1,47 @@
+# Nos movemos a la rama develop
+git checkout develop
+
+# Creamos una nueva feature
+git flow feature start 3-newrelease
+
+# Hacemos modificaciones asociadas a nuestra feature
+# agregamos los cambios
+git add .
+
+git commit -am "Add cambios feature"
+
+# Publicamos los cambios de nuestra feature
+git flow feature publish 3-newrelease
+
+# Finalizamos la feature
+git flow finish 1-testcreatefeatureissue
+
+# Nos movemos a develop
+git checkout develop
+# eliminamos la rama de la feature
+git branch -d feature/1-testcreatefeatureissue
+
+# creamos la nueva release
+git flow release start sprint3-release
+
+# publicamos los cambios de esta release
+git flow release publish sprint3-release
+
+# hacemos merge de develop con el release
+git merge release/sprint3-release
+
+# hacemos push de los cambios
+git push
+
+# nos movemos a la rama de release
+git checkout release/sprint3-release
+
+
+# Finalizamos el release
+git flow release finish sprint3-release
+
+# nos movemos a la rama master
+git checkout master
+
+# hacemos push de todos los tags, para que nuestro release aparezca como un tag
+git push --tags
