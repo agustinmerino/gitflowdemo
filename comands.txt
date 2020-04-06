@@ -157,4 +157,4 @@ git checkout master
 
 
 # subimos toda la rama master
-git push --all origen
+git push --all origin
