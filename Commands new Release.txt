@@ -80,3 +80,8 @@ git push --tags
 
 # subimos toda la rama master
 git push --all origin
+
+# for track repo the feature  use this Command 
+git flow feature track 1-jhonfeature
+
+# another test
